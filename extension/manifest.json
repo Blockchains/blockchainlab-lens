@@ -1,0 +1,51 @@
+{
+ "manifest_version": 3,
+ "name": "Blockchain Lab Lens",
+ "version": "0.1.0",
+ "description": "Explain any transaction, address or contract on Etherscan-family explorers with Blockchain Lab's free tools. Built by Blockchain Lab (blockchainlab.com).",
+ "homepage_url": "https://blockchainlab.com/?utm_source=blockchainlab-lens&utm_medium=extension&utm_campaign=manifest",
+ "icons": {
+  "16": "icons/16.png",
+  "48": "icons/48.png",
+  "128": "icons/128.png"
+ },
+ "action": {
+  "default_popup": "popup.html",
+  "default_title": "Blockchain Lab Lens"
+ },
+ "background": {
+  "service_worker": "background.js"
+ },
+ "permissions": [
+  "contextMenus"
+ ],
+ "content_scripts": [
+  {
+   "matches": [
+    "https://etherscan.io/*",
+    "https://www.etherscan.io/*",
+    "https://basescan.org/*",
+    "https://www.basescan.org/*",
+    "https://arbiscan.io/*",
+    "https://www.arbiscan.io/*",
+    "https://polygonscan.com/*",
+    "https://www.polygonscan.com/*",
+    "https://optimistic.etherscan.io/*",
+    "https://bscscan.com/*",
+    "https://www.bscscan.com/*",
+    "https://snowtrace.io/*",
+    "https://www.snowtrace.io/*",
+    "https://base.blockscout.com/*",
+    "https://eth.blockscout.com/*",
+    "https://arbitrum.blockscout.com/*",
+    "https://polygon.blockscout.com/*",
+    "https://optimism.blockscout.com/*"
+   ],
+   "js": [
+    "detect.js",
+    "content.js"
+   ],
+   "run_at": "document_idle"
+  }
+ ]
+}
