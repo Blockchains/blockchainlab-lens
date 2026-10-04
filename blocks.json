@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Blockchains/.github/main/docs/blocks.schema.json",
+  "schema_version": "1.0",
+  "name": "blockchainlab-lens",
+  "repo": "Blockchains/blockchainlab-lens",
+  "summary": "One-click explainer for Etherscan-family and Blockscout explorers: a Manifest V3 extension and a bookmarklet that open the matching blockchainlab-tools page. Its URL detector (`extension/detect.js`) is a reusable UMD module.",
+  "kind": [
+    "browser-extension",
+    "library"
+  ],
+  "stability": "stable",
+  "license": "MIT",
+  "homepage": "https://blockchains.github.io/blockchainlab-lens/",
+  "entrypoints": [
+    {
+      "type": "browser-script",
+      "name": "BLLens (detect.js)",
+      "ref": "extension/detect.js",
+      "usage": "<script src=\"https://blockchains.github.io/blockchainlab-lens/extension/detect.js\"></script>",
+      "exports": [
+        "BLLens.detect(href)",
+        "BLLens.fromText(text, chain)",
+        "BLLens.HOSTS",
+        "BLLens.TOOLS"
+      ]
+    },
+    {
+      "type": "file",
+      "name": "extension/",
+      "ref": "extension/manifest.json",
+      "usage": "chrome://extensions → Load unpacked → extension/"
+    },
+    {
+      "type": "web",
+      "name": "bookmarklet",
+      "ref": "bookmarklet/bookmarklet.src.js",
+      "usage": "https://blockchains.github.io/blockchainlab-lens/"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "explorer URL or text",
+      "type": "string",
+      "description": "tx hash, address, ENS name or calldata; explorer page URLs on the supported Etherscan-family and Blockscout hosts"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "tools deep link",
+      "type": "URL",
+      "description": "blockchainlab-tools tx/address/abi page for the right chain"
+    },
+    {
+      "name": "detection",
+      "type": "{chain, kind, value, url}"
+    }
+  ],
+  "deps": [
+    "Chromium-based browser (extension) or any browser (bookmarklet/script)"
+  ],
+  "compatible_with": [
+    {
+      "repo": "Blockchains/blockchainlab-tools",
+      "how": "every explanation is a tools page"
+    },
+    {
+      "repo": "Blockchains/blockchainlab-api",
+      "how": "use with API data in dashboards (Build with Blocks recipe 3)"
+    },
+    {
+      "repo": "Blockchains/blockchainlab-mcp",
+      "how": "same deep links in MCP results"
+    }
+  ],
+  "tests": {
+    "command": "pip install playwright && python -m playwright install chromium && python test_extension.py",
+    "ci": ".github/workflows/test.yml",
+    "network": true
+  },
+  "docs": {
+    "readme": "README.md",
+    "agents": "AGENTS.md",
+    "llms": "llms.txt"
+  }
+}

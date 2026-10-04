@@ -1,0 +1,22 @@
+# blockchainlab-lens
+
+> One-click explainer for Etherscan-family and Blockscout explorers: a Manifest V3 extension and a bookmarklet that open the matching blockchainlab-tools page. Its URL detector (`extension/detect.js`) is a reusable UMD module.
+
+## Docs
+
+- [README](https://raw.githubusercontent.com/Blockchains/blockchainlab-lens/main/README.md): overview, install and the 'Use as a building block' section
+- [AGENTS.md](https://raw.githubusercontent.com/Blockchains/blockchainlab-lens/main/AGENTS.md): setup, build/test commands, structure map, conventions and rules for AI coding agents
+- [blocks.json](https://raw.githubusercontent.com/Blockchains/blockchainlab-lens/main/blocks.json): machine-readable building-block manifest (entrypoints, inputs, outputs, deps, compatible blocks)
+
+## Key files
+
+- [extension/detect.js](https://github.com/Blockchains/blockchainlab-lens/blob/main/extension/detect.js): reusable detector
+- [extension/manifest.json](https://github.com/Blockchains/blockchainlab-lens/blob/main/extension/manifest.json): MV3 manifest
+
+## Related
+
+- [Build with Blocks](https://github.com/Blockchains/.github/blob/main/docs/BUILD-WITH-BLOCKS.md): how to assemble projects from Blockchains repos
+- [Org llms.txt](https://blockchains.github.io/llms.txt) · [blocks catalogue](https://blockchains.github.io/blocks.json)
+- [Blockchains/blockchainlab-tools](https://github.com/Blockchains/blockchainlab-tools): every explanation is a tools page
+- [Blockchains/blockchainlab-api](https://github.com/Blockchains/blockchainlab-api): use with API data in dashboards (Build with Blocks recipe 3)
+- [Blockchains/blockchainlab-mcp](https://github.com/Blockchains/blockchainlab-mcp): same deep links in MCP results

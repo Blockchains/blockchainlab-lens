@@ -39,6 +39,46 @@ pip install playwright && python -m playwright install chromium && python test_e
 
 MIT. Not financial advice.
 
+<!-- blocks:start -->
+## Use as a building block
+
+> **For AI agents and builders:** read [`AGENTS.md`](AGENTS.md) (setup, commands, structure, rules), [`llms.txt`](llms.txt) (doc map) and the machine-readable [`blocks.json`](blocks.json) ([schema](https://github.com/Blockchains/.github/blob/main/docs/BLOCKS-SCHEMA.md)). How all Blockchains blocks fit together: **[Build with Blocks](https://github.com/Blockchains/.github/blob/main/docs/BUILD-WITH-BLOCKS.md)** · org catalogue: [https://blockchains.github.io/blocks.json](https://blockchains.github.io/blocks.json).
+
+**What it exports**
+
+| Export | Type | Install / access |
+|---|---|---|
+| `BLLens (detect.js)` | browser-script | `<script src="https://blockchains.github.io/blockchainlab-lens/extension/detect.js"></script>` |
+| `extension/` | file | `chrome://extensions → Load unpacked → extension/` |
+| `bookmarklet` | web | `https://blockchains.github.io/blockchainlab-lens/` |
+
+`BLLens (detect.js)` exports: `BLLens.detect(href)`, `BLLens.fromText(text, chain)`, `BLLens.HOSTS`, `BLLens.TOOLS`
+
+**Minimal example** (detect.js served from GitHub Pages; checked 2026-10-04)
+
+```html
+<script src="https://blockchains.github.io/blockchainlab-lens/extension/detect.js"></script>
+<script>
+  BLLens.fromText("vitalik.eth", "base");
+  // → https://blockchains.github.io/blockchainlab-tools/address/?q=vitalik.eth&chain=base&utm_source=blockchainlab-lens
+  BLLens.detect("https://basescan.org/tx/0x…");   // { chain: "base", kind: "tx", value, url }
+</script>
+```
+
+**Inputs → outputs**
+
+- In: `explorer URL or text` (string) tx hash, address, ENS name or calldata; explorer page URLs on the supported Etherscan-family and Blockscout hosts
+- Out: `tools deep link` (URL) blockchainlab-tools tx/address/abi page for the right chain; `detection` ({chain, kind, value, url})
+
+**Composes with**
+
+- [Blockchains/blockchainlab-tools](https://github.com/Blockchains/blockchainlab-tools): every explanation is a tools page
+- [Blockchains/blockchainlab-api](https://github.com/Blockchains/blockchainlab-api): use with API data in dashboards (Build with Blocks recipe 3)
+- [Blockchains/blockchainlab-mcp](https://github.com/Blockchains/blockchainlab-mcp): same deep links in MCP results
+
+**Versioning & stability:** `stable`. Extension releases are GitHub Releases (`blockchainlab-lens.zip`). `BLLens.detect/fromText` signatures are stable; new explorer hosts may be added to `HOSTS`.
+<!-- blocks:end -->
+
 ## Configuration
 
 None. The extension and bookmarklet only read the explorer URL and open the matching [Blockchain Lab Tools](https://blockchains.github.io/blockchainlab-tools/) page; no keys, no tracking.
