@@ -39,5 +39,17 @@ pip install playwright && python -m playwright install chromium && python test_e
 
 MIT. Not financial advice.
 
+## Configuration
+
+None. The extension and bookmarklet only read the explorer URL and open the matching [Blockchain Lab Tools](https://blockchains.github.io/blockchainlab-tools/) page; no keys, no tracking.
+
+## Licence
+
+MIT, see [LICENSE](LICENSE).
+
+## Contributing
+
+Issues and pull requests are welcome. Please read the [contributing guide](https://github.com/Blockchains/.github/blob/main/CONTRIBUTING.md), [code of conduct](https://github.com/Blockchains/.github/blob/main/CODE_OF_CONDUCT.md) and [security policy](https://github.com/Blockchains/.github/blob/main/SECURITY.md) first.
+
 ---
 Built by Blockchain Lab — [blockchainlab.com](https://blockchainlab.com/?utm_source=github&utm_medium=readme&utm_campaign=blockchainlab-lens)
